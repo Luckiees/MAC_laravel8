@@ -11,6 +11,10 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public function posts()
+    {
+        return $this->hasMany('App\PostModels');
+    }
     public function usertag()
     {
         return $this->morphToMany(Usertag::class, 'userables');

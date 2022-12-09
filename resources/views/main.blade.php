@@ -4,11 +4,17 @@
     <input type="button" value="write" onclick="location.href='/create'">
         <div>
             <h3>목록</h3>
-            {{ $data = $request => $id, $title }} {{-- 왜 안먹히는가? 못찾겠다 꾀꼬리 --}}
-            @foreach ($posts as $post)
-                Title : {{ $post -> title }}
+           <div>
+            @foreach ($PostModel as $post)
+            @foreach ($spectification->specification->title)
+            {{ $specification->id }}
+            <p>{{$post->title}}</p>
+            <p>{{ $post->content }}</p>
             @endforeach
-            <input type="button" onclick="location.href=''" value="edit">
+            <p>{{ $PostModel->userable_id }}</p>
+            <p>{{ $PostModel->userable_type }}</p>
+           </div>
+            <input type="button" onclick="location.href='/edit'" value="edit">
             <input type="button" onclick="location.href=''" value="delete">
         </div>
 @endsection

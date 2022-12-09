@@ -21,16 +21,16 @@ Route::get('/list', function (Request $request) {
     //$uri = $request->path();
 });
 // url/create가 된다. PostModelController class의 create 메소드 실행 후 응답 돌려줌.
-//Route::get('/create', 'PostModelController@create'); 이걸론 왜 안될까?
 Route::get('/create', function () {
     return view('create');
 });
-Route::post('/list','App\Http\Controllers\PostModelController@store');
-Route::put('edit/{id}',[PostModelController::class, 'edit'])->name('update');
-Route::get('/show/{id}',[PostModelController::class, 'show'])->name('show');
-Route::get('/delete/{id}','PostModelController@delete')->name('delete');
+
+Route::resource('posts', 'App\Http\Controllers\PostModelController');
 Route::redirect('/here', '/there', 301);
-// // Route::fullback(function () {
-// //     '현재 페이지 오류로 인하여 준비중입니다.';
-// //     return view('main');
-// // });
+// Route::fullback(function () {
+//     '현재 페이지 오류로 인하여 준비중입니다.';
+//     return view('main');
+// });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
